@@ -1,6 +1,9 @@
+
 import React from 'react';
-import { motion } from 'framer-motion';
-import { ChevronRight, ChevronLeft, Menu } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronRight, ChevronLeft } from 'lucide-react';
+import { slides } from '../data/slides'; // Import to access slide config for visuals
+import { Visual3D } from './Visual3D';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -18,10 +21,23 @@ export const Layout: React.FC<LayoutProps> = ({
   onPrev 
 }) => {
   const progress = ((currentSlide + 1) / totalSlides) * 100;
+  const currentVisual = slides[currentSlide]?.visual;
 
   return (
     <div className="w-screen h-screen relative flex flex-col bg-slate-900 overflow-hidden text-slate-100 font-sans selection:bg-indigo-500/30">
       
+      {/* Dynamic 3D Background */}
+      <AnimatePresence mode="wait">
+        {currentVisual && (
+             <div key={currentVisual} className="absolute inset-0 z-0">
+                 <Visual3D variant={currentVisual} />
+             </div>
+        )}
+      </AnimatePresence>
+
+      {/* Global Gradient Overlay to ensure text readability over 3D elements */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-slate-900/80 via-transparent to-slate-900/90 pointer-events-none" />
+
       {/* Top Bar */}
       <div className="absolute top-0 left-0 w-full z-50 p-6 flex justify-between items-center">
          <div className="font-heading font-bold text-xl tracking-tight text-slate-400">
@@ -63,12 +79,6 @@ export const Layout: React.FC<LayoutProps> = ({
         >
             <ChevronRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
         </button>
-      </div>
-
-      {/* Background Ambience */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-          <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-indigo-900/20 rounded-full blur-[100px]" />
-          <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-slate-800/30 rounded-full blur-[120px]" />
       </div>
 
     </div>

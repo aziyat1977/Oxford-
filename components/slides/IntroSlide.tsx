@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { SlideConfig } from '../../types';
 import { motion } from 'framer-motion';
@@ -12,8 +13,7 @@ export const IntroSlide: React.FC<IntroSlideProps> = ({ slide, isActive, isTrans
   return (
     <div className="flex flex-col items-center justify-center h-full text-center px-8 relative z-10">
       
-      {/* Decorative Background Elements */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary-500/10 rounded-full blur-3xl -z-10 animate-pulse-slow" />
+      {/* 3D background handled by Layout */}
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}

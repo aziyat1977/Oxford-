@@ -1,5 +1,5 @@
 
-import { SlideConfig, SlideType } from '../types';
+import { SlideConfig, SlideType, VisualVariant } from '../types';
 
 export const slides: SlideConfig[] = [
   // ==========================================
@@ -10,21 +10,25 @@ export const slides: SlideConfig[] = [
     type: SlideType.INTRO,
     title: 'Trends, Friends & Spends',
     subtitle: 'Are you really my friend? Why is spending #trending?',
+    visual: VisualVariant.ABSTRACT_NET
   },
   {
     id: 'stats-1',
     type: SlideType.STATS_CHART,
     title: 'The Magic Number',
+    visual: VisualVariant.DATA_FLOW
   },
   {
     id: 'reading-1',
     type: SlideType.INTERACTIVE_READING,
     title: 'Reading Mission: Rob Jones',
+    visual: VisualVariant.FLOATING_BOOK
   },
   {
     id: 'quiz-read-check',
     type: SlideType.QUIZ,
     title: 'Comprehension Check',
+    visual: VisualVariant.EXAM_BOARD,
     content: {
       questions: [
         {
@@ -48,11 +52,11 @@ export const slides: SlideConfig[] = [
       ]
     }
   },
-  // NEW 1.1 EXERCISE 1: Deep Reading Details
   {
     id: 'quiz-rob-details',
     type: SlideType.QUIZ,
     title: 'Deep Dive: Rob\'s Mission',
+    visual: VisualVariant.EXAM_BOARD,
     content: {
       questions: [
         {
@@ -80,12 +84,13 @@ export const slides: SlideConfig[] = [
     id: 'grammar-1',
     type: SlideType.GRAMMAR_TIMELINE,
     title: 'Tense Timeline',
+    visual: VisualVariant.TIME_SPIRAL
   },
-  // NEW 1.1 EXERCISE 2: Grammar Signal Words
   {
     id: 'match-grammar-signals',
     type: SlideType.MATCHING,
     title: 'Match Signals to Tenses',
+    visual: VisualVariant.PUZZLE_PIECES,
     content: {
         pairs: [
             { id: '1', left: 'Currently', right: 'Present Continuous' },
@@ -100,6 +105,7 @@ export const slides: SlideConfig[] = [
     id: 'quiz-grammar-1',
     type: SlideType.QUIZ,
     title: 'Grammar Master: Present Tenses',
+    visual: VisualVariant.EXAM_BOARD,
     content: {
         questions: [
             {
@@ -123,11 +129,11 @@ export const slides: SlideConfig[] = [
         ]
     }
   },
-  // NEW 1.1 EXERCISE 3: Question Formation (Page 7 Ex 4a)
   {
     id: 'quiz-question-forms',
     type: SlideType.QUIZ,
     title: 'Forming Questions',
+    visual: VisualVariant.EXAM_BOARD,
     content: {
         questions: [
             {
@@ -155,11 +161,13 @@ export const slides: SlideConfig[] = [
     id: 'friends-1',
     type: SlideType.FRIEND_CIRCLES,
     title: 'Friendship Circles',
+    visual: VisualVariant.SOCIAL_SPHERES
   },
   {
     id: 'matching-phrasal',
     type: SlideType.MATCHING,
     title: 'Friendship Phrasal Verbs',
+    visual: VisualVariant.PUZZLE_PIECES,
     content: {
         pairs: [
             { id: '1', left: 'Get on well with', right: 'Have a good relationship' },
@@ -170,11 +178,11 @@ export const slides: SlideConfig[] = [
         ]
     }
   },
-  // NEW 1.1 EXERCISE 4: Vocabulary Context
   {
     id: 'quiz-vocab-context',
     type: SlideType.QUIZ,
     title: 'Vocabulary in Context',
+    visual: VisualVariant.SOCIAL_SPHERES,
     content: {
         questions: [
             {
@@ -198,11 +206,11 @@ export const slides: SlideConfig[] = [
         ]
     }
   },
-  // NEW 1.1 EXERCISE 5: Friendship Logic
   {
     id: 'quiz-social-circle-logic',
     type: SlideType.QUIZ,
     title: 'Friendship Dynamics',
+    visual: VisualVariant.SOCIAL_SPHERES,
     content: {
         questions: [
             {
@@ -230,6 +238,7 @@ export const slides: SlideConfig[] = [
     id: 'reflective-1',
     type: SlideType.REFLECTION,
     title: 'Discussion: Quality vs Quantity',
+    visual: VisualVariant.CONVERSATION,
     content: {
         prompt: "Is it possible to really be friends with 338 people? Why or why not? Describe your own 'Inner Circle'."
     }
@@ -243,16 +252,19 @@ export const slides: SlideConfig[] = [
     type: SlideType.TRANSITION,
     title: 'Unit 1.2: #Trending',
     subtitle: 'Black Friday. Bargains. Chaos.',
+    visual: VisualVariant.SHOPPING_CART
   },
   {
     id: 'vocab-1',
     type: SlideType.VOCAB_GAME,
     title: 'Vocabulary Sort',
+    visual: VisualVariant.SHOPPING_CART
   },
   {
     id: 'matching-shopping',
     type: SlideType.MATCHING,
     title: 'Shopping Vocabulary',
+    visual: VisualVariant.SHOPPING_CART,
     content: {
         pairs: [
             { id: '1', left: 'Bargain', right: 'Something bought for a good price' },
@@ -263,11 +275,11 @@ export const slides: SlideConfig[] = [
         ]
     }
   },
-  // NEW 1.2 EXERCISE 1: Black Friday Listening Facts
   {
     id: 'quiz-black-friday',
     type: SlideType.QUIZ,
     title: 'Listening: Black Friday Facts',
+    visual: VisualVariant.EXAM_BOARD,
     content: {
         questions: [
             {
@@ -291,11 +303,11 @@ export const slides: SlideConfig[] = [
         ]
     }
   },
-  // NEW 1.2 EXERCISE 2: Advanced Definitions
   {
     id: 'match-shopping-defs',
     type: SlideType.MATCHING,
     title: 'Advanced Shopping Terms',
+    visual: VisualVariant.SHOPPING_CART,
     content: {
         pairs: [
             { id: '1', left: 'Purchaser', right: 'Formal word for buyer' },
@@ -310,12 +322,13 @@ export const slides: SlideConfig[] = [
     id: 'grammar-2',
     type: SlideType.GRAMMAR_TETRIS,
     title: 'State vs Action',
+    visual: VisualVariant.BLOCKS_TETRIS
   },
-  // NEW 1.2 EXERCISE 3: State vs Action Nuance
   {
     id: 'quiz-state-nuance',
     type: SlideType.QUIZ,
     title: 'State vs Action Nuances',
+    visual: VisualVariant.BLOCKS_TETRIS,
     content: {
         questions: [
             {
@@ -343,6 +356,7 @@ export const slides: SlideConfig[] = [
     id: 'quiz-state-verbs',
     type: SlideType.QUIZ,
     title: 'State Verbs Challenge',
+    visual: VisualVariant.BLOCKS_TETRIS,
     content: {
         questions: [
             {
@@ -366,11 +380,11 @@ export const slides: SlideConfig[] = [
         ]
     }
   },
-  // NEW 1.2 EXERCISE 4: State Verb Categories
   {
     id: 'match-state-cats',
     type: SlideType.MATCHING,
     title: 'Categorize State Verbs',
+    visual: VisualVariant.BLOCKS_TETRIS,
     content: {
         pairs: [
             { id: '1', left: 'Know / Understand', right: 'Thinking / Mental State' },
@@ -385,6 +399,7 @@ export const slides: SlideConfig[] = [
     id: 'quiz-poster-grammar',
     type: SlideType.QUIZ,
     title: 'Poster Grammar (Ex 10a)',
+    visual: VisualVariant.FLOATING_BOOK,
     content: {
         questions: [
             {
@@ -408,11 +423,11 @@ export const slides: SlideConfig[] = [
         ]
     }
   },
-  // NEW 1.2 EXERCISE 5: Buy Nothing Day Comprehension
   {
     id: 'quiz-buy-nothing',
     type: SlideType.QUIZ,
     title: 'Buy Nothing Day Analysis',
+    visual: VisualVariant.SHOPPING_CART,
     content: {
         questions: [
             {
@@ -440,6 +455,7 @@ export const slides: SlideConfig[] = [
     id: 'reflective-2',
     type: SlideType.REFLECTION,
     title: 'Debate: Buy Nothing Day',
+    visual: VisualVariant.CONVERSATION,
     content: {
         prompt: "Look at the posters. Do you agree with the message of 'Buy Nothing Day'? Is Black Friday a harmless tradition or a problem? Speak for 1 minute."
     }
@@ -448,11 +464,13 @@ export const slides: SlideConfig[] = [
     id: 'task-1',
     type: SlideType.CREATIVE_TASK,
     title: 'Design Challenge',
+    visual: VisualVariant.PUZZLE_PIECES
   },
   {
     id: 'final-quiz',
     type: SlideType.QUIZ,
     title: 'Unit Review',
+    visual: VisualVariant.EXAM_BOARD,
     content: {
         questions: [
             {
@@ -484,11 +502,13 @@ export const slides: SlideConfig[] = [
     type: SlideType.TRANSITION,
     title: 'Unit Test 1B',
     subtitle: 'Comprehensive Assessment for Units 1.1 & 1.2',
+    visual: VisualVariant.EXAM_BOARD
   },
   {
     id: 'test-1b-section-1-2',
     type: SlideType.QUIZ,
     title: 'Test 1B: Listening & Keywords',
+    visual: VisualVariant.EXAM_BOARD,
     content: {
         context: "Listening Section (Transcript Unavailable). Please answer based on Sentence Stress rules. Content words (nouns, verbs, adjectives) are usually stressed. Function words (pronouns, prepositions) are usually unstressed.",
         questions: [
@@ -559,6 +579,7 @@ export const slides: SlideConfig[] = [
     id: 'test-1b-section-3-4',
     type: SlideType.QUIZ,
     title: 'Test 1B: Grammar & Vocabulary',
+    visual: VisualVariant.EXAM_BOARD,
     content: {
         questions: [
             {
@@ -628,6 +649,7 @@ export const slides: SlideConfig[] = [
     id: 'test-1b-section-4-continued',
     type: SlideType.QUIZ,
     title: 'Test 1B: Grammar Continued',
+    visual: VisualVariant.EXAM_BOARD,
     content: {
         questions: [
             {
@@ -667,6 +689,7 @@ export const slides: SlideConfig[] = [
     id: 'test-1b-section-5',
     type: SlideType.QUIZ,
     title: 'Test 1B: Verb Forms',
+    visual: VisualVariant.EXAM_BOARD,
     content: {
         questions: [
             {
@@ -736,6 +759,7 @@ export const slides: SlideConfig[] = [
     id: 'test-1b-section-6-reading',
     type: SlideType.QUIZ,
     title: 'Test 1B: Reading',
+    visual: VisualVariant.FLOATING_BOOK,
     content: {
         context: `Meeting again… on the internet!
 
@@ -814,6 +838,7 @@ Imagine meeting your daughter again after a gap of sixty-eight years. Hard to be
     id: 'test-1b-section-8-9',
     type: SlideType.QUIZ,
     title: 'Test 1B: Dialogue & Word Forms',
+    visual: VisualVariant.CONVERSATION,
     content: {
         questions: [
             {
@@ -914,6 +939,7 @@ Imagine meeting your daughter again after a gap of sixty-eight years. Hard to be
     id: 'test-1b-section-9-10',
     type: SlideType.QUIZ,
     title: 'Test 1B: Word Forms & Vocab',
+    visual: VisualVariant.EXAM_BOARD,
     content: {
         questions: [
             {

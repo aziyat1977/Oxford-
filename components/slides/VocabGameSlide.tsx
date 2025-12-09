@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { SlideConfig, GameItem } from '../../types';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -20,7 +21,7 @@ export const VocabGameSlide: React.FC<VocabGameSlideProps> = ({ slide, isActive 
   const [items, setItems] = useState<GameItem[]>(initialItems);
   const [peopleBucket, setPeopleBucket] = useState<GameItem[]>([]);
   const [moneyBucket, setMoneyBucket] = useState<GameItem[]>([]);
-  const [isComplete, setIsComplete] = useState(false);
+  const [shakingId, setShakingId] = useState<string | null>(null);
 
   // Reset when slide becomes active
   useEffect(() => {
@@ -28,24 +29,14 @@ export const VocabGameSlide: React.FC<VocabGameSlideProps> = ({ slide, isActive 
         setItems(initialItems);
         setPeopleBucket([]);
         setMoneyBucket([]);
-        setIsComplete(false);
     }
   }, [isActive]);
 
-  useEffect(() => {
-      if (items.length === 0 && peopleBucket.length > 0) {
-          setIsComplete(true);
-      }
-  }, [items, peopleBucket, moneyBucket]);
-
   const handleMove = (item: GameItem, target: 'people' | 'money') => {
-      // Simple validation or allow wrong answers? Let's just move them for fluidity, 
-      // but in a real app, we might check correctness.
-      // Here we assume the user knows, or we can flash red if wrong.
-      // Let's implement auto-correct behavior for this demo.
-      
       if (item.category !== target) {
-          // Shake animation logic could go here
+          // Trigger shake animation
+          setShakingId(item.id);
+          setTimeout(() => setShakingId(null), 500);
           return;
       }
 
@@ -109,22 +100,14 @@ export const VocabGameSlide: React.FC<VocabGameSlideProps> = ({ slide, isActive 
                     key={item.id}
                     layoutId={item.id}
                     initial={{ scale: 0.8, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
+                    animate={shakingId === item.id ? { x: [-10, 10, -10, 10, 0], borderColor: '#ef4444' } : { scale: 1, opacity: 1, borderColor: 'transparent' }}
                     exit={{ scale: 0, opacity: 0 }}
-                    className="bg-slate-200 text-slate-900 px-6 py-3 rounded-lg font-bold shadow-lg hover:scale-105 active:scale-95 transition-transform flex gap-2"
-                    onClick={(e) => {
-                        // Determine which side based on click position or simple alternation?
-                        // Let's make the user click LEFT or RIGHT of the word in a desktop view,
-                        // But strictly for this demo, we'll use two small buttons inside or just click to auto-sort (easy mode)
-                        // Implementing specific target logic:
-                        handleMove(item, item.category); 
-                    }}
+                    transition={shakingId === item.id ? { duration: 0.4 } : {}}
+                    className={`bg-slate-200 text-slate-900 px-6 py-3 rounded-lg font-bold shadow-lg hover:scale-105 active:scale-95 transition-transform flex gap-2 border-2 ${shakingId === item.id ? 'bg-red-100' : ''}`}
+                    onClick={() => handleMove(item, item.category)}
                 >
                     {item.text}
-                    {/* Visual Hint for demo purposes */}
-                    <span className="text-xs opacity-50 block mt-1 uppercase tracking-tighter">
-                        {item.category === 'people' ? '← People' : 'Money →'}
-                    </span>
+                    {/* Visual Hint removed to force user to choose (auto-validation on click) */}
                 </motion.button>
             ))}
           </AnimatePresence>
